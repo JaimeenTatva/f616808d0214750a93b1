@@ -43,11 +43,13 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
+  # custom failure message for login
   def invalid_login_attempt
     warden.custom_failure!
     json_response({ success: false, message: "Username/Password incorrect." }, 400)
   end
 
+  # check user params exists for login
   def user_params_exists
     return unless params[:user].blank?
     json_response({ success: false, message: "Missing user parameters." }, :unprocessable_entity)

@@ -16,6 +16,7 @@ class User < ApplicationRecord
   
   before_create :generate_auth_token!
 
+  # generate auth_token for authentication
   def generate_auth_token!
     begin
       self.auth_token = Devise.friendly_token
@@ -29,7 +30,7 @@ class User < ApplicationRecord
 
   # unfollow an user
   def unfollow!(tw_user)
-    active_relationships.find_by(followed_id: tw_user.id).destroy
+    active_relationships.find_by(followed_id: tw_user&.id)&.destroy
   end
 
   # checks whether a user is following other user
@@ -37,6 +38,7 @@ class User < ApplicationRecord
     following.include?(tw_user)
   end
 
+  # to avoid returning auth_token in other requests
   def as_json(options = {})
     super(options.merge({ except: [:auth_token, :created_at, :updated_at] }))
   end

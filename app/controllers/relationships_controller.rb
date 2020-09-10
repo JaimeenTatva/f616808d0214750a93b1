@@ -19,6 +19,7 @@ class RelationshipsController < ApplicationController
 
     private
 
+    # get user for following
     def set_user
         @tw_user ||= User.find(params[:followed_id])
     end

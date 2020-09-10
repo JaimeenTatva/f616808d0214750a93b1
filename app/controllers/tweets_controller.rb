@@ -26,6 +26,7 @@ class TweetsController < ApplicationController
         params.require(:tweet).permit(:content)
     end
 
+    # get user for listing tweets
     def set_user
         @user ||= User.find(params[:user_id])
     end
