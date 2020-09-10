@@ -11,6 +11,8 @@ class User < ApplicationRecord
   # relationship for followers
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+
+  has_many :tweets
   
   before_create :generate_auth_token!
 
@@ -33,5 +35,9 @@ class User < ApplicationRecord
   # checks whether a user is following other user
   def following?(tw_user)
     following.include?(tw_user)
+  end
+
+  def as_json(options = {})
+    super(options.merge({ except: [:auth_token, :created_at, :updated_at] }))
   end
 end
