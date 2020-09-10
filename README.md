@@ -45,10 +45,7 @@ List of APIs with headers & request parameters:
             "message": "Registration successful.",\
             "user": {\
                 "id": 3,\
-                "email": "user3@yopmail.com",\
-                "auth_token": "m4eiy4s7wv_2TjaxUV23",\
-                "created_at": "2020-09-10T09:22:41.246Z",\
-                "updated_at": "2020-09-10T09:22:41.246Z"\
+                "email": "user3@yopmail.com"\
             }\
         }
 2. Login API:\

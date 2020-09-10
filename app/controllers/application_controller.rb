@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_auth_token(token) if token
   end
 
-  # authenticate user based on token
+  # authenticate user
   def authenticate_with_token!
     json_response({ success: false, message: "Not Authenticated." }, :unauthorized) unless current_user.present?
   end

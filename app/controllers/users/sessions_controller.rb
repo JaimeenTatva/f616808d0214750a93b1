@@ -31,7 +31,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     sign_out(current_user)
     current_user.update(auth_token: nil)
-    json_response({ success: true, message: "Logged out successfully. "})
+    json_response({ success: true, message: "Logged out successfully."})
   end
 
   # protected
